@@ -1,11 +1,17 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@web/*": ["./*"] // no other project in the monorepo uses this alias
+    },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "declaration": false,
+    "declarationMap": false
   },
   "include": [
     "**/*.ts",

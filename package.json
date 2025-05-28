@@ -4,6 +4,9 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "web": "turbo run dev --parallel --filter=web",
+    "build:ui": "cd packages/ui && pnpm run build",
+    "build:utils": "cd packages/utils && pnpm run build",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
