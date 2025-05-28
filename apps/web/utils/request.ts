@@ -4,17 +4,23 @@ import API, { TAPIRequest } from "@repo/utils/api";
 
 type TQueryProps = TAPIRequest & {
   key: unknown[];
+  gcTime?: number;
+  staleTime?: number;
 }
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
-export const query = <T,>({ key, method, url, headers, params, data }: TQueryProps) => {
+export const query = <T,>({
+  key, method, url, headers, params, data,
+  gcTime = 1000 * 60 * 60, staleTime = 1000 * 60 * 60
+}: TQueryProps) => {
   const innerAPI = new API(baseURL || "");
   innerAPI.setErrorCallback(error => {
     console.log(error)
   })
   const { data: resultData, isLoading } = useQuery({
     queryKey: key,
+    gcTime, staleTime,
     queryFn: () => innerAPI.request<T>({
       method,
       headers,
@@ -34,6 +40,7 @@ export const query = <T,>({ key, method, url, headers, params, data }: TQueryPro
 
 type TMutationOptionProps = {
   gcTime?: number;
+  saveKey?: boolean;
 }
 
 export const mutation = <T,>(key: string[], { gcTime = 1000 * 60 * 60 }: TMutationOptionProps) => {

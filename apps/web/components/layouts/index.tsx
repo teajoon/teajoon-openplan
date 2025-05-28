@@ -1,16 +1,27 @@
 "use client";
 
 import { ReactNode } from "react";
+import { QueryClient } from "@tanstack/react-query";
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client'
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { gcTime: 1000 * 60 * 60 * 24 }
+  }
+});
 
-const queryClient = new QueryClient();
+const persister = createSyncStoragePersister({
+  storage: window.localStorage
+});
 
 const DefaultLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider
+      client={queryClient}
+      persistOptions={{ persister }}>
       {children}
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   )
 }
 

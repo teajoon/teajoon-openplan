@@ -5,9 +5,10 @@ import Text from "@repo/ui/elements/text";
 import { Spinner } from "@repo/ui/elements/loading";
 
 import { mutation } from "@web/utils/request";
+import { TSubmitResult } from "@web/types";
 
 export default function Home() {
-  const { isPending, mutateAsync } = mutation(['submit'], {});
+  const { isPending, mutateAsync } = mutation<TSubmitResult>(['submit'], {});
   
   const submit = async () => {
     const { success, data } = await mutateAsync({
