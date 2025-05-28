@@ -2,8 +2,8 @@
 
 import { ReactNode, memo } from "react";
 
-type TButtonVariant = "flat" | "outline" | "text";
-type TButtonColors = "black" | "white" | "primary";
+export type TButtonVariant = "flat" | "outline" | "text";
+export type TButtonColors = "black" | "white" | "primary";
 
 const buttonCSS: { [k in TButtonVariant]: { [s in TButtonColors]: string } } = {
   text: {
@@ -36,6 +36,7 @@ type TButtonProps = {
   borderRadius?: string;
   borderColor?: string;
   borderWidth?: string;
+  borderStyle?: string;
   cursor?: string;
   hoverBackgroundColor?: string;
   activeBackgroundColor?: string;
@@ -46,11 +47,11 @@ type TButtonProps = {
 
 const Button = memo(({
   variant = "text",
-  width = "w-full", height = "h-12", color = "black",
-  justifyContent = "justify-center", justifyItems = "justify-center",
+  width = "w-full", height = "h-12", color,
+  justifyContent = "justify-center", justifyItems = "justify-items-center",
   alignContent = "content-center", alignItems = "items-center",
   backgroundColor, borderRadius = "rounded-none", cursor = "cursor-pointer",
-  borderColor, borderWidth,
+  borderColor, borderWidth, borderStyle,
   hoverBackgroundColor, activeBackgroundColor,
   children, className = [], onClick
 }: TButtonProps) => {
@@ -62,12 +63,13 @@ const Button = memo(({
   className.push(alignItems);
   className.push(cursor);
 
-  className.push(buttonCSS[variant][color]);
+  if (color) className.push(buttonCSS[variant][color]);
 
   className.push(borderRadius);
   if (backgroundColor) className.push(backgroundColor);
   if (borderColor) className.push(borderColor);
   if (borderWidth) className.push(borderWidth);
+  if (borderStyle) className.push(borderStyle);
   if (hoverBackgroundColor) className.push(hoverBackgroundColor);
   if (activeBackgroundColor) className.push(activeBackgroundColor);
   return (

@@ -37,6 +37,7 @@ dist/
 
 .vscode
 apps/web/.env
+apps/storybook/.storybook
 
 packages/utils/node_modules
 packages/utils/dist
