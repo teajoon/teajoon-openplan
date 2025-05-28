@@ -30,14 +30,14 @@ const Result = () => {
   if (!datas?.submitResult) return null;
 
   return (
-    <div className="relative h-screen grid grid-rows-[52px_40px_1fr_60px]">
+    <div className="relative min-h-screen grid grid-rows-[52px_40px_1fr_60px]">
       <div className="grid justify-center content-center z-1">
         <Text size="text-[15px]" color="text-white-100" weight="font-medium">김태준</Text>
       </div>
       <div />
-      <div className="grid justify-center content-center z-1">
-        <div className="grid grid-cols-[660px_660px] gap-[80px]">
-          <div className="relative">
+      <div className="grid justify-center content-center z-1 grid-cols-[1fr] px-[20px]">
+        <div className="grid 2xl:grid-cols-[660px_660px] justify-center 2xl:gap-[80px] grid-cols-[1fr] gap-[40px]">
+          <div className="relative lg:h-[440px] md:h-[485px] h-[223px]">
             <Image fill className="rounded-[24px] object-cover" alt="download_url"
               placeholder="blur" blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBAB  bWyZJf74GZgAAAABJRU5ErkJggg=="
               src={datas?.submitResult?.download_url} />
