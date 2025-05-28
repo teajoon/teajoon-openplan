@@ -1,0 +1,9 @@
+{
+  "overrides": [
+    {
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

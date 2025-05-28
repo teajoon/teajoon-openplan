@@ -7,7 +7,7 @@ import Button from "@repo/ui/elements/button";
 import Text from "@repo/ui/elements/text";
 import { Spinner } from "@repo/ui/elements/loading";
 
-import { mutation } from "@web/utils/request";
+import { mutation } from "@web/utils/request"; 
 import { TSubmitResult } from "@web/types";
 import { useStore } from "@web/store";
 
@@ -19,21 +19,21 @@ export default function Home() {
   
   const submit = async () => {
     if (isPending) return;
-    const { success, data } = await mutateAsync({
+    const { success, data } =   await mutateAsync({
       method: "get",
-      url: "/id/0/info"
+      url: "/id/0/info" 
     });
     if (success) {
       updateDatas({ submitResult: data });
       router.push("/result");
     }
-  }
+  };
 
   useEffect(() => {
     if (datas?.submitResult) {
       router.push('/result');
     }
-  }, []);
+  }, [datas?.submitResult, router]);
 
   return (
     <div className="grid h-screen grid-rows-[52px_1fr_140px]">

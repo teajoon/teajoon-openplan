@@ -14,7 +14,7 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
     <QueryClientProvider client={queryClient}>
       {children}
     </QueryClientProvider>
-  )
-}
+  );
+};
 
 export default DefaultLayout;

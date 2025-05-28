@@ -11,7 +11,7 @@ const buttonCSS: { [k in TButtonVariant]: { [s in TButtonColors]: string } } = {
     white: "bg-white-100 border-white-100 border border-solid hover:bg-primary-300 hover:border-primary-300 active:bg-primary-300 active:border-primary-300",
     primary: "bg-transparent border-transparent border border-solid hover:bg-primary-300 hover:border-primary-300 active:bg-primary-300 active:border-primary-300",
   },
-  flat: {
+  flat: { 
     black: "bg-black-100 border-black-100 border border-solid hover:bg-primary-900 hover:border-primary-900 active:bg-primary-900 active:border-primary-900",
     white: "bg-white-100 border-white-100 border border-solid hover:bg-primary-300 hover:border-primary-300 active:bg-primary-300 active:border-primary-300",
     primary: "bg-primary border-primary border border-solid hover:bg-primary-600 hover:border-primary-600 active:bg-primary-600 active:border-primary-600",
@@ -21,7 +21,7 @@ const buttonCSS: { [k in TButtonVariant]: { [s in TButtonColors]: string } } = {
     white: "bg-white-100 border-white-100 border border-solid hover:bg-primary-300 hover:border-primary-600 active:bg-primary-300 active:border-primary-300",
     primary: "bg-transparent border-primary border border-solid hover:bg-primary-300 hover:border-primary-600 active:bg-primary-300 active:border-primary-600",
   }
-}
+};
 
 type TButtonProps = {
   variant?: TButtonVariant;
@@ -68,8 +68,8 @@ const Button = memo(({
   if (backgroundColor) className.push(backgroundColor);
   if (borderColor) className.push(borderColor);
   if (borderWidth) className.push(borderWidth);
-  if (hoverBackgroundColor) className.push(hoverBackgroundColor)
-  if (activeBackgroundColor) className.push(activeBackgroundColor)
+  if (hoverBackgroundColor) className.push(hoverBackgroundColor);
+  if (activeBackgroundColor) className.push(activeBackgroundColor);
   return (
     <button
       className={`grid ${className?.join(" ")}`}

@@ -16,5 +16,5 @@ export const Spinner = ({
       color={color} secondaryColor={secondaryColor}
       ariaLabel="oval-loading"
     />
-  );
-}
+  ); 
+};
