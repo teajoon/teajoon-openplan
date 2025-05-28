@@ -1,14 +1,20 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import Button from "@repo/ui/elements/button";
 import Text from "@repo/ui/elements/text";
 import { Spinner } from "@repo/ui/elements/loading";
 
 import { mutation } from "@web/utils/request";
 import { TSubmitResult } from "@web/types";
+import { useStore } from "@web/store";
 
 export default function Home() {
+  const router = useRouter();
   const { isPending, mutateAsync } = mutation<TSubmitResult>(['submit'], {});
+  const { datas, updateDatas } = useStore(state => state);
   
   const submit = async () => {
     const { success, data } = await mutateAsync({
@@ -16,9 +22,16 @@ export default function Home() {
       url: "/id/0/info"
     });
     if (success) {
-      console.log(data);
+      updateDatas({ submitResult: data });
+      router.push("/result");
     }
   }
+
+  useEffect(() => {
+    if (datas?.submitResult) {
+      router.push('/result');
+    }
+  }, []);
 
   return (
     <div className="grid h-screen grid-rows-[52px_1fr_140px]">
