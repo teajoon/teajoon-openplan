@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "storybook": "turbo run dev --parallel --filter=storybook",
-    "web": "turbo run dev --parallel --filter=web",
+    "dev": "turbo run dev --parallel --filter=web",
     "build:ui": "cd packages/ui && pnpm run build",
     "build:utils": "cd packages/utils && pnpm run build",
     "lint": "turbo run lint",

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
+
 import Text from "@repo/ui/elements/text";
 import Button from "@repo/ui/elements/button";
 import { useStore } from "@web/store";
