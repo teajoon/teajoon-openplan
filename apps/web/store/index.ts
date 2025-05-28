@@ -3,19 +3,19 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 import { TSubmitResult } from "@web/types";
 
+type TDatas = {
+  submitResult?: TSubmitResult;
+}
+
 const storeKey = "store-data";
 
-export const useStore = create<{
-  datas: {
-    submitResult?: TSubmitResult;
-  },
-  updateDatas: (datas: {
-    submitResult?: TSubmitResult
-  }) => void;
-}>()(
-  persist(
+export const useStore = create(
+  persist<{
+    datas?: TDatas,
+    updateDatas: (datas: TDatas) => void;
+  }>(
     (set) => ({
-      datas: localStorage.getItem(storeKey) || {},
+      datas: undefined,
       updateDatas: (newDatas) => set({ datas: { ...newDatas } }),
     }),
     {

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
-import "./globals.css";
 import DefaultLayout from "../components/layouts";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Teajoon-Openplan",

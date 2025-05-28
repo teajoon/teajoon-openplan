@@ -14,9 +14,11 @@ import { useStore } from "@web/store";
 export default function Home() {
   const router = useRouter();
   const { isPending, mutateAsync } = mutation<TSubmitResult>(['submit'], {});
-  const { datas, updateDatas } = useStore(state => state);
+  const datas = useStore(state => state.datas);
+  const updateDatas = useStore(state => state.updateDatas);
   
   const submit = async () => {
+    if (isPending) return;
     const { success, data } = await mutateAsync({
       method: "get",
       url: "/id/0/info"
