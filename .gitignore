@@ -37,3 +37,8 @@ dist/
 
 .vscode
 apps/web/.env
+
+packages/utils/node_modules
+packages/utils/dist
+packages/ui/node_modules
+packages/ui/dist
